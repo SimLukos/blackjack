@@ -82,6 +82,14 @@ class Langas2(Langas):
         self.dalint_kort_label = LabelFrame(master, bg='#00B401', borderwidth=0)
         self.dalint_kort_label.pack(fill='x', expand=YES, padx=20)
 
+        # statymas
+        self.bet_frame = LabelFrame(master, bg='#00B401', borderwidth=0)
+        self.bet_frame.pack(fill='x', expand=YES, padx=20)
+        self.bet_label = Label(self.bet_frame, text='Bet:', font=self.font2, bg='#00B401')
+        self.bet_label.grid(row=0, column=0, padx=10, pady=10)
+        self.bet_entry = Entry(self.bet_frame, bg='#00B401', width=5)
+        self.bet_entry.grid(row=0, column=2, pady=10)
+
         #zaidejo kortu labelframe
         self.zaid_kort_label = LabelFrame(master, bg='#00B401', borderwidth=0)
         self.zaid_kort_label.pack(fill='x', expand=YES, padx=20)
@@ -105,14 +113,6 @@ class Langas2(Langas):
         self.hit.grid(row=1, column=3, padx=10, pady=10)
         self.stand = Button(self.zaidejas_frame, text='STAND', command=self.stoti, font=self.font3, borderwidth=0, highlightthickness=0)
         self.stand.grid(row=2, column=3, padx=10, pady=10)
-
-        # statymas
-        self.bet_frame = LabelFrame(master, bg='#00B401', borderwidth=0)
-        self.bet_frame.pack(fill='x', expand=YES, padx=20)
-        self.bet_label = Label(self.bet_frame, text='Bet:', font=self.font2, bg='#00B401')
-        self.bet_label.grid(row=0, column=0, padx=10, pady=10)
-        self.bet_entry = Entry(self.bet_frame, bg='#00B401', width=5)
-        self.bet_entry.grid(row=0, column=2, pady=10)
 
         #zaidejo zetonai
         self.zet_img = Image.open('chips.png')
@@ -163,7 +163,7 @@ class Langas2(Langas):
         if self.lost_label.cget('text') == 'WIN':
             statymas = int(self.bet_entry.get())
             self.bet_entry.delete(0, END)
-            skirtumas = int(self.zaid_zet.cget('text')) + (statymas * 2)
+            skirtumas = int(self.zaid_zet.cget('text')) + statymas
             self.zaid_zet.config(text=f'{skirtumas}')
             zetonai = skirtumas
             self.zaid_zet.config(text=zetonai)
